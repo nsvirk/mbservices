@@ -40,9 +40,10 @@ func setupRoutes(e *echo.Echo) {
 
 // startServer starts the Echo server on the specified port
 func startServer(e *echo.Echo) {
-	port := os.Getenv("PORT")
+	port := os.Getenv("MBSERVICES_PORT")
 	if port == "" {
-		port = "8080"
+		port = "3008"
 	}
+	e.Logger.Infof("Starting mbservices server on port %s", port)
 	e.Logger.Fatal(e.Start(":" + port))
 }
